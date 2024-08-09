@@ -24,5 +24,16 @@
     - Cargar Archivos estatico ( load static )
     - Favicon
     - Google Fonts
+    - 
+    - navbar.html
+    - Configuramos todo el navbar 
+
+
+5. Contruimos toda la parte (home)
+    - Es la  parte que el usuario NO LOGIN vera 
+    - La parte que cualquir usuario vera 
+
+    
+
 
 
