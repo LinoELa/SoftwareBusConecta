@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+{% comment %} <h1> Bienvenido al fomulario de inicio de sesion </h1> {% endcomment %}
+
+<br />
+<br />
+<br />
+<br />
+
+<!-- 6 D -->
+
+<!-- 6 Autentificacion -->
+
+{% if user.is_authenticated  %}
+
+
+
+{% else %}
+
+
+
+
+<!-- 6 Page content-->
+<section class="">
+    <div class="container px-5">
+        <!-- 6Contact form-->
+        <div class=" rounded-4 px-4 px-md-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                        class="bi bi-door-open-fill"></i></div>
+                <h1 class="fw-bolder">Iniciar Sesion</h1>
+
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <!-- url : Nombre de urlpatterns : patron de url-->
+                    <form method='POST' action={% url 'login' %} id="contactForm">
+
+                        {% csrf_token %}
+
+                        <!-- 6 nombre -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name='username' type="text" placeholder="Introduce tu nombre"
+                                required />
+                            <label for="name">Nombre</label>
+                        </div>
+
+                        <br />
+
+                        <!-- 6 Contraseña -->
+
+                        <div class="form-floating mb-3 position-relative">
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Introduce tu contraseña" required />
+                            <label for="password">Contraseña*</label>
+                            <span class="position-absolute top-50 end-0 translate-middle-y me-3">
+                                <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                            </span>
+                        </div>
+
+
+                        <br />
+
+                        <!-- Submit Button-->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Iniciar
+                                sesión</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6 SHOW - Ver  : password-->
+<script>
+const togglePassword = document.querySelector("#togglePassword");
+const password = document.querySelector("#password");
+
+togglePassword.addEventListener("click", function () {
+    const type = password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+    this.classList.toggle("bi-eye");
+    this.classList.toggle("bi-eye-slash");
+});
+
+</script>
+
+
+
+{% endif %}
+
+
+{% endblock  %}

@@ -39,17 +39,21 @@
 
 
 
-<!-- LOGIC
-#### LOGIC 
+
+#### LOGIC
 
 6. Primera Logica - (LogIn) Iniciar Session
     - (Views) importamos los modulos a utitilizar : 
-        - ( django.contrib.auth ) - log in , log out y autenticacion 
         - ( django.shortcuts ) - redirect
+        - ( django.contrib.auth ) - log in , log out y autenticacion 
         - ( django.contrib ) - messages
+    - url & funcion  login_user   & Plantilla 
+    - Plantilla Layout - formuario a rellenar para inciciar sesion
+    - Poner que se pueda ver la contraseña 
     - 
-
-
-
- -->
-
+    - Implementar [AUTENTIFICACION] 
+    - Autentificacion (form_login.html) para que NO SE VEA los ya LOGIN
+    - (6 F - G ) configuarar la FUNCTION par que la persona qeu haga el POST de form se verifique 
+    - (6 H ) en (base.html) Configurar bucle mensajes de errores 
+    - 
+    - (6 I ) - Vincular Inicio al (navbar)
