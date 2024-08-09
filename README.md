@@ -1,5 +1,7 @@
 # SoftwareBusConecta"
 
+#### BASIC 
+
 1. Configuracion basica 
     - proyecto 
     - app 
@@ -10,7 +12,7 @@
 3. Contruir la apliacion basica 
     - urls 
     - views
-    - plantilla (home)
+    - plantilla (home.html)
 
 4. Contruir la plantilla base 
     - base.html 
@@ -29,11 +31,25 @@
     - Configuramos todo el navbar 
 
 
-5. Contruimos toda la parte (home)
-    - Es la  parte que el usuario NO LOGIN vera 
-    - La parte que cualquir usuario vera 
+5. Contruimos [Diseño] toda la parte (home) - (inicio)
+    - (home) - Layout basico que veran los usuarios NO LOGIN 
+    - (inicio) - Layout basico que veran los usuario YES LOGIN
+    - 
+    - Vista & Plantilla de (Inicio.html)
 
-    
 
 
+<!-- LOGIC
+#### LOGIC 
+
+6. Primera Logica - (LogIn) Iniciar Session
+    - (Views) importamos los modulos a utitilizar : 
+        - ( django.contrib.auth ) - log in , log out y autenticacion 
+        - ( django.shortcuts ) - redirect
+        - ( django.contrib ) - messages
+    - 
+
+
+
+ -->
 

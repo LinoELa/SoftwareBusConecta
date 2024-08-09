@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- Par que SI aparezca cuando as inicido session -->
+
+
+{% block content %}
+
+<div class='container'>
+
+
+    {% comment %} PART 9.01 Tablas {% endcomment %}
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Inicio</th>
+                <th scope="col">Final</th>
+                <th scope="col">ID</th>
+                {% comment %} <th scope="col">Creado</th> {% endcomment %}
+            </tr>
+        </thead>
+
+
+        <tbody>
+            <tr>
+
+                <td> nuevo Inicio
+                </td>
+                <td> nuevazo Final
+                </td>
+                <td> nuevito id
+                </td>
+
+            </tr>
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
+
+
+
+
+{% endblock  %}
