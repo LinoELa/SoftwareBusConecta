@@ -9,6 +9,34 @@
 <!-- 5 -->
 
 <div class='container'>
+    <!-- 5 -->
+
+    {% if user.is_authenticated %}
+
+        <!-- Error 404 Template 1 -  -->
+        <section class="mx-auto vh-100 d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h2 class="d-flex justify-content-center align-items-center gap-2">
+                                <span class="display-1 fw-bold">4</span>
+                                <i class="bi bi-exclamation-circle-fill text-danger display-4"></i>
+                                <span class="display-1 fw-bold bsb-flip-h">4</span>
+                            </h2>
+                            <h3 class="h2 mb-2">Oops! Estas perdido</h3>
+                            <p class="mb-5">No se ha encontrado la página que busca</p>
+                            <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="{% url 'inicio' %}"
+                                role="button">Volver a Inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    </div>
+
+    {% else %}
 
     <main class="flex-shrink-0">
 
@@ -20,23 +48,12 @@
                         <!-- Header text content-->
                         <div class="text-center text-xxl-start">
                             <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
-                                {% comment %} <div class="text-uppercase">Contacto &middot; Buss &middot; Informacion
-                                </div>
-                                {% endcomment %}
+
                                 <div class="">Contacto &middot; Bus &middot; Informacion</div>
                             </div>
                             <div class="fs-3 fw-light text-muted ">Te ayudamos a llegar donde sea en Zaragoza</div>
                             <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline  ">SUPER RAPIDO y
                                     GRATIS</span></h1>
-
-                            {% comment %} Contacto & Informacion {% endcomment %}
-                            {% comment %} <div
-                                class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                <a class="btn btn-outline-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
-                                    href="{% url 'home' %}">Contacto</a>
-                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder"
-                                    href="projects.html">Informacion</a>
-                            </div> {% endcomment %}
                         </div>
                     </div>
                     <div class="col-xxl-7">
@@ -238,5 +255,6 @@
 </div>
 </main>
 
+{% endif %}
 
 {% endblock  %}

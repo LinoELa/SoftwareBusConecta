@@ -1,0 +1,160 @@
+<!-- 8 C : -->
+{% extends "base.html" %}
+{% comment %} Extender la base.html aqui {% endcomment %}
+<!-- PART 6 -->
+
+
+{% load static %}
+{% comment %} cargar las imagenes {% endcomment %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+<!-- 8 K -->
+<!--  Prabar si funcioan :  {{formulario.as_p}}   -->
+
+
+
+<main class="flex-shrink-0">
+
+    <!-- Page content-->
+    <section class="py-2">
+        <div class="container px-5">
+            <!-- Contact form-->
+            <div class="bg-light rounded-4 py-2 px-4 px-md-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                            class="bi bi-person-plus-fill"></i></div>
+                    <h1 class="fw-bolder">REGISTRATE</h1>
+                    {% comment %} <p class="lead fw-normal text-muted mb-0">Let's work together!</p> {% endcomment %}
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class='col-lg-8 col-xl-6'>
+                        <!-- 8 L -->
+
+                        <form method='POST' action='' id='contactForm'>
+                            <!-- token -->
+                            {% csrf_token %}
+                            <!-- CONTROL DE ERRORES   -->
+                            {% if formulario.errors %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+                            <!-- PART 6.15 ALERTA Para el manejo de mensajes de error-->
+                            {% for campos_fields in formulario  %}
+                                {% if campos_fields.errors %}
+
+                                    {{ campos_fields.errors}}
+                                
+                                 {% endif %}
+                            {% endfor %}
+
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+
+
+                        {% endif %}
+
+
+                            <!-- formulario -->
+                            {% comment %} {{formulario.as_p}} {% endcomment %}
+
+                                <!-- OJO PARA VER LA CONTASEÑAA DEL FORMULARIO formulario -->
+
+                            <!-- nombre -->
+                                <div class="form-floating mb-3 position-relative">
+                                    {{ formulario.nombre }}
+                                    <label for="password2">Nombre</label>
+
+                                </div>
+                                <br />
+
+                            <!-- Nombre Usuario -->
+                                <div class="form-floating mb-3 position-relative">
+                                    {{ formulario.username }}
+                                    <label for="name">Nombre Usuario</label>
+                                </div>
+                                <br/>
+
+                                <!-- Correo -->
+                                <div class="form-floating mb-3 position-relative">
+                                    {{ formulario.correo }}
+                                    <label for="name">Correo Electronico</label>
+                                </div>
+                                <br/>
+
+                            <!-- Password1 -->
+
+                                <div class="form-floating mb-3 position-relative">
+                                    {{ formulario.password1 }}
+                                    <label for="password1">Contraseña*</label>
+                                    <span class="position-absolute top-50 end-0 translate-middle-y me-3">
+                                        <i class="bi bi-eye-slash" id="togglePassword1" style="cursor: pointer;"></i>
+                                    </span>
+                                </div>
+                                <br/>
+                            <!-- Password2 -->
+
+                                <div class="form-floating mb-3 position-relative">
+                                    {{ formulario.password2 }}
+                                    <label for="password2">Confirmar Contraseña*</label>
+                                    <span class="position-absolute top-50 end-0 translate-middle-y me-3">
+                                        <i class="bi bi-eye-slash" id="togglePassword2" style="cursor: pointer;"></i>
+                                    </span>
+                                </div>
+                                
+
+                
+
+                            <!-- JavaScript para alternar visibilidad de la confirmación de contraseña -->
+
+
+
+                            <!-- Submit Button-->
+                            <div class="d-grid py-5">
+                                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Crear Cuenta
+                                </button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- 8 SHOW - Ver  : password-->
+
+<script>
+const togglePassword2 = document.querySelector("#togglePassword2");
+const password2 = document.querySelector("#password2");
+
+togglePassword2.addEventListener("click", function () {
+    const type = password2.getAttribute("type") === "password" ? "text" : "password";
+    password2.setAttribute("type", type);
+    this.classList.toggle("bi-eye");
+    this.classList.toggle("bi-eye-slash");
+});
+
+
+const togglePassword1 = document.querySelector("#togglePassword1");
+const password1 = document.querySelector("#password1");
+
+togglePassword1.addEventListener("click", function () {
+    const type = password2.getAttribute("type") === "password" ? "text" : "password";
+    password1.setAttribute("type", type);
+    this.classList.toggle("bi-eye");
+    this.classList.toggle("bi-eye-slash");
+})
+
+</script>
+
+{% endblock %}
