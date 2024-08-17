@@ -152,3 +152,10 @@
 
 
 #### LOGIC SOFTWARE
+
+15. Logica del software 
+    - usamos el modelo.html no hace falta plantilla 
+    - usamos url(modele) no hace falta url 
+    - crear la funcion refactorizado 
+    - Crear la funcion principal 
+    - logica de sofware en la funcon principal 

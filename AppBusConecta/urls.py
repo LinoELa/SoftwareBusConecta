@@ -26,4 +26,7 @@ urlpatterns = [
     path('actualizar/<int:pk>', views.actualizar_user, name='actualizar'),
 
 
+
+
+
 ]

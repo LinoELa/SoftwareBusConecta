@@ -8,6 +8,12 @@
 <!-- 11 -->
 <div class='container'>
 
+{% if user.is_authenticated  %}
+
+
+    {% comment %} ------------------------- INFORMACION INTRO ---------------------------- {% endcomment %}
+
+
     <table class="table table-hover table-bordered bg-dark">
         <thead class="shadow bg-dark">
             <tr>
@@ -26,7 +32,9 @@
     <div>
 
         <!-- 11 -->
-        <!-- SECCION : BOTONES accions  -->
+
+        {% comment %} ------------------------- INFORMACION BOTONES ---------------------------- {% endcomment %}
+
 
         <div class='mb-3 d-flex justify-content-center'>
             <button type="button" class="btn btn-secondary mx-3 px-3"><a href="{% url 'inicio' %}"
@@ -42,7 +50,9 @@
                     class='text-white fw-bold' style="text-decoration:none;">Borrar</a></button>
         </div>
 
-        <!-- 11 -------------------------- SECCION NOTAS --------------------------------  -->
+        <!-- 11 -->
+        {% comment %} ------------------------- INFORMACION NOTAS ---------------------------- {% endcomment %}
+
 
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
@@ -77,82 +87,197 @@
         <br />
 
 
-        <!-- 11 -->
-
-        <!-- SECCION : POSTE 1  -->
-        <div class='container'>
-
-            <table class="table table-hover table-bordered mt-2 ">
-                <thead class="table-light shadow">
-                    <tr>
-                        <th scope="col" class='shadow border-0 text-center'>POSTE: <span
-                                class='text-danger'>{{ modelo_individual.poste_1}}</span></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                </tbody>
-            </table>
-
-
-            {% comment %}
-
-            INFORMACION DEL POSTE 1
-
-            {% endcomment %}
-
-        </div>
-
 
         <!-- 11 -->
-        <!-- SECCION : POSTE 2  -->
-        <div class='container'>
+        {% comment %} ------------------------- INFORMACION POSTE 1 ---------------------------- {% endcomment %}
 
-            <table class="table table-hover table-bordered mt-2 ">
-                <thead class="table-light shadow">
-                    <tr>
-                        <th scope="col" class='shadow border-0 text-center'>POSTE: <span
-                                class='text-danger'>{{ modelo_individual.poste_2}}</span></th>
-                    </tr>
-                </thead>
+    </div>
+    <div class='container'>
 
-                <tbody>
-                </tbody>
-            </table>
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_1}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Espacio limpio -->
 
 
-            {% comment %}
+        {% comment %} PART 16 Tablas {% endcomment %}
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_1  %}
+                <tr>
 
-            INFORMACION DEL POSTE 1
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
 
-            {% endcomment %}
+                    <td> {{ elementos_1.0}} </td>
 
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+    <br />
+
+
+
+
+    {% comment %} -------------------------POSTE 2 PART 11 ---------------------------- {% endcomment %}
+
+    <div class='container'>
+
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_2}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Espacio limpio -->
+            </tbody>
+        </table>
+
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_2  %}
+                <tr>
+
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
+
+                    <td> {{ elementos_1.0}} </td>
+
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <br />
+
+    {% comment %} -------------------------POSTE 2 PART 11 ---------------------------- {% endcomment %}
+
+
+
+    <div class='container mb-3'>
+
+        <table class="table table-hover table-bordered mt-2 ">
+            <thead class="table-light shadow">
+                <tr>
+                    <th scope="col" class='shadow border-0 text-center'>POSTE: <span
+                            class='text-danger'>{{ modelo_individual.poste_3}}</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Espacio limpio -->
+            </tbody>
+        </table>
+
+
+        <table class="table table-hover table-bordered mb-2">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">Numero</th> {% endcomment %}
+                    <th scope="col">linea</th>
+                    <th scope="col">Destino a</th>
+                    <th scope="col">Minutos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos_1 in datos_3  %}
+                <tr>
+
+                    {% comment %} <td scope='row'> {{ forloop.counter}} </td> {% endcomment %}
+
+                    <td> {{ elementos_1.0}} </td>
+
+                    <td> {{ elementos_1.1 }} </td>
+
+                    <td> {{ elementos_1.2 }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+    </div>
+    
+</div>
+
+{% else %}
+
+
+<!-- Error 404 Template 1 -  -->
+<section class="mx-auto vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="d-flex justify-content-center align-items-center gap-2">
+                        <span class="display-1 fw-bold">4</span>
+                        <i class="bi bi-exclamation-circle-fill text-danger display-4"></i>
+                        <span class="display-1 fw-bold bsb-flip-h">4</span>
+                    </h2>
+                    <h3 class="h2 mb-2">Oops! Estas perdido</h3>
+                    <p class="mb-5">No se ha encontrado la página que busca</p>
+                    <a class="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0" href="{% url 'inicio' %}"
+                        role="button">Volver a Inicio</a>
+                </div>
+            </div>
         </div>
-
-        <!-- 11 -->
-        <!-- SECCION : POSTE 3  -->
-        <div class='container'>
-
-            <table class="table table-hover table-bordered mt-2 ">
-                <thead class="table-light shadow">
-                    <tr>
-                        <th scope="col" class='shadow border-0 text-center'>POSTE: <span
-                                class='text-danger'>{{ modelo_individual.poste_3}}</span></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                </tbody>
-            </table>
+    </div>
+</section>
 
 
-            {% comment %}
-
-            INFORMACION DEL POSTE 1
-
-            {% endcomment %}
-
-        </div>
+{% endif %}
 
 
-        {% endblock %}
+{% endblock %}

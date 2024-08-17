@@ -14,6 +14,20 @@ from .models import historial
 # 13 E 
 from .formularios import FormAgregar
 
+# 15 A
+from bs4 import BeautifulSoup
+import requests
+from django.shortcuts import get_object_or_404
+
+
+
+
+
+
+
+
+
+
 
 
 # Create your views here.
@@ -101,21 +115,6 @@ def register_user(request):
     return render(request, 'register.html', {'formulario':formulario_registro})
     
 
-
-
-# 11 A 
-def modelos_user(request, pk):
-
-    if request.user.is_authenticated:
-
-        modelos_individuales = historial.objects.get(id=pk)
-
-        return render (request, 'modelos.html', {'modelo_individual':modelos_individuales})
-    else:
-        messages.error(request, 'Debes iniciar session.')
-        return redirect ('inicio')
-
-
 # 12  B
 def borrar_user(request,pk):
 
@@ -181,3 +180,68 @@ def actualizar_user(request, pk):
 
 
     
+
+# -----------------------------------------------------LOGIN SOFTWARE -------------------------------------------------------------- #
+#RECTORIZACION 
+def obtener_datos_poste(poste_int):
+    url = f"https://zaragoza-pasobus.avanzagrupo.com/frm_esquemaparadatime.php?poste={poste_int}"
+    response = requests.get(url)
+    response.encoding = response.apparent_encoding
+
+    datos = response.text
+    soup = BeautifulSoup(datos, 'lxml')
+
+    bus_web_apuntar = [
+        td.get_text() for td in soup.find_all('td', class_='digital') 
+        if not td.find('svg') and td.attrs and td.get_text().strip() != ''
+    ]
+
+    linea = bus_web_apuntar[0::3]
+    destino = bus_web_apuntar[1::3]
+    tiempo = bus_web_apuntar[2::3]
+
+    return list(zip(linea, destino, tiempo))
+
+# LOGICA 
+def modelos_user(request, pk):
+    if request.user.is_authenticated:
+        
+        modelo_individual = get_object_or_404(historial, id=pk)
+
+        contexto = {
+            'modelo_individual':modelo_individual,
+        }
+
+        for i in range (1 ,4): #porque solo hay 3 postes
+            poste_string = getattr(modelo_individual , f"poste_{i}", None)
+
+            if poste_string:
+                try:
+                    poste_int = int(poste_string)
+                    datos = obtener_datos_poste(poste_int) 
+                    contexto[f"datos_{i}"] = datos
+                except ValueError:
+                    print("f Error : 'poste_{i}' valor '{poste_string}' no es un numero entero ")
+            
+            else : 
+                break
+
+        return render (request, 'modelos.html',contexto)
+    else:
+        messages.error(request, 'Tienes que iniciar sesion')
+        return redirect('inicio')
+
+# # 11 A 
+# def modelos_user(request, pk):
+
+#     if request.user.is_authenticated:
+
+#         modelos_individuales = historial.objects.get(id=pk)
+
+#         return render (request, 'modelos.html', {'modelo_individual':modelos_individuales})
+#     else:
+#         messages.error(request, 'Debes iniciar session.')
+#         return redirect ('inicio')
+
+
+# -----------------------------------------------------LOGIC SOFTWARE -------------------------------------------------------------- #
